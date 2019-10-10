@@ -10,13 +10,6 @@ export default createMaterialBottomTabNavigator(
   {
     Home: {
       screen: home,
-      // navigationOptions: ({navigation}) => ({
-      //   header: null,
-      //   tabBarLabel: 'Home',
-      //   tabBarIcon: ({tintColor}) => (
-      //     <Icon name="trash" color={{tintColor}} size={24} />
-      //   ),
-      // }),
       navigationOptions: {
         tabBarLabel: 'Home',
         tabBarIcon: ({tintColor}) => (

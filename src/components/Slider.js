@@ -1,4 +1,34 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
+import {View, StyleSheet} from 'react-native';
+
+import Slideshow from 'react-native-image-slider-show';
+// import DataDummy from './Banners';
+
+const bannersI = [
+  {
+    title: 'Lilith Cord',
+    url:
+      'http://postfiles3.naver.net/20160626_34/juderland_1466924213290Heosh_JPEG/%C1%A6%B8%F1re.jpg?type=w2',
+  },
+  {
+    title: '동데 누나',
+    url:
+      'https://2.bp.blogspot.com/-bCqRFKQEU7A/XI1Sl4J7k_I/AAAAAAAAACQ/Y9jJBNemwCEHAb9LJC0aNHs80tF1l_pewCLcBGAs/s400/20190316_233825.png',
+  },
+  {
+    title: 'Yuri Part Time Job',
+    url: 'https://image.webtoonguide.com/fe/b7/3cc0163681b2c8d23b6209a7d22a',
+  },
+  {
+    title: 'Tsumi To Kai',
+    url: 'https://f01.mrcdn.info/file/mrportal/h/c/1/f/So.AUrX32c.jpg',
+  },
+  {
+    title: 'Perfect Half',
+    url:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShNcJ0Ycw1dpd1vSqLrpgw8iE41IoKn-yO0zxExYlVkpChNJwI',
+  },
+];
 
 export default class SlideshowTools extends Component {
   constructor(props) {
@@ -6,24 +36,7 @@ export default class SlideshowTools extends Component {
     this.state = {
       position: 1,
       interval: null,
-      dataSource: [
-        {
-          title: 'Title 1',
-          caption: 'Caption 1',
-          url:
-            'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
-        },
-        {
-          title: 'Title 2',
-          caption: 'Caption 2',
-          url: 'http://placeimg.com/640/480/any',
-        },
-        {
-          title: 'Title 3',
-          caption: 'Caption 3',
-          url: 'http://placeimg.com/640/480/any',
-        },
-      ],
+      dataSource: bannersI,
     };
   }
   componentWillMount() {
@@ -41,4 +54,24 @@ export default class SlideshowTools extends Component {
   componentWillUnmount() {
     clearInterval(this.state.interval);
   }
+  render() {
+    return (
+      <View style={styles.showBorder}>
+        <Slideshow
+          height={264}
+          dataSource={this.state.dataSource}
+          position={this.state.position}
+          onPositionChanged={position => this.setState({position})}
+        />
+      </View>
+    );
+  }
 }
+const styles = StyleSheet.create({
+  showBorder: {
+    height: 270,
+    marginTop: 5,
+    borderColor: 'black',
+    borderWidth: 3,
+  },
+});
