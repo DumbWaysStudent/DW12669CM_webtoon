@@ -12,37 +12,7 @@ import {Button, Header, Left, Title, Right, Body} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {FlatList} from 'react-native-gesture-handler';
-
-const banners = [
-  {
-    title: 'EP 5',
-    date: '10 Oktober 2019',
-    url:
-      'http://postfiles3.naver.net/20160626_34/juderland_1466924213290Heosh_JPEG/%C1%A6%B8%F1re.jpg?type=w2',
-  },
-  {
-    title: 'EP 4',
-    date: '5 Oktober 2019',
-    url:
-      'https://2.bp.blogspot.com/-bCqRFKQEU7A/XI1Sl4J7k_I/AAAAAAAAACQ/Y9jJBNemwCEHAb9LJC0aNHs80tF1l_pewCLcBGAs/s400/20190316_233825.png',
-  },
-  {
-    title: 'EP 3',
-    date: '1 Oktober 2019',
-    url: 'https://image.webtoonguide.com/fe/b7/3cc0163681b2c8d23b6209a7d22a',
-  },
-  {
-    title: 'EP 2',
-    date: '27 September 2019',
-    url: 'https://f01.mrcdn.info/file/mrportal/h/c/1/f/So.AUrX32c.jpg',
-  },
-  {
-    title: 'EP 1',
-    date: '20 September 2019',
-    url:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShNcJ0Ycw1dpd1vSqLrpgw8iE41IoKn-yO0zxExYlVkpChNJwI',
-  },
-];
+import {bannersEps} from '../components/Banners';
 
 const shareOptions = {
   title: 'Title',
@@ -70,7 +40,9 @@ export class Home extends Component {
   handleBack() {
     this.props.navigation.navigate('home');
   }
-  handleDetail() {}
+  handleDetail() {
+    this.props.navigation.navigate('detailToonEps');
+  }
 
   render() {
     return (
@@ -85,7 +57,7 @@ export class Home extends Component {
             <Body>
               <Title style={{color: 'black', fontSize: 40, fontWeight: 'bold'}}>
                 {' '}
-                릴리스 코드{' '}
+                퍼펙트 하프{' '}
               </Title>
             </Body>
             <Right>
@@ -96,12 +68,12 @@ export class Home extends Component {
           </Header>
         </View>
         <View style={styles.viewToon}>
-          <Image source={{uri: banners[0].url}} style={styles.toon} />
+          <Image source={{uri: bannersEps[4].url}} style={styles.toon} />
         </View>
         <View style={{flex: 5.75}}>
           <FlatList
             // style={styles.flatList1}
-            data={banners}
+            data={bannersEps}
             renderItem={({item}) => this.listAllEp(item)}
             keyExtractor={item => item.title}
           />
