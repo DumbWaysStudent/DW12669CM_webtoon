@@ -21,7 +21,7 @@ const shareOptions = {
   subject: 'file',
 };
 
-export class Home extends Component {
+export class DetailToon extends Component {
   listAllEp(item) {
     return (
       <View style={{flexDirection: 'row'}}>
@@ -83,7 +83,7 @@ export class Home extends Component {
   }
 }
 
-export default Home;
+export default DetailToon;
 
 const styles = StyleSheet.create({
   viewToon: {

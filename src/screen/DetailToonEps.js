@@ -1,60 +1,10 @@
 import React, {Component} from 'react';
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  Image,
-  Share,
-} from 'react-native';
+import {View, StyleSheet, Image, Share} from 'react-native';
 import {Button, Header, Left, Title, Right, Body} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {FlatList} from 'react-native-gesture-handler';
 import {banners} from '../components/Banners';
-
-// const banners = [
-//   {
-//     title: '1',
-//     url: 'https://4.bp.blogspot.com/-AJymNNkUGpc/WvP2frFdfXI/AAAAAAAAcNE/AmrKcJhayXc8k1spwyKlXfzh03N-GN--QCLcBGAs/s1600/2.jpg',
-//   },
-//   {
-//     title: '2',
-//     url: 'https://4.bp.blogspot.com/-AJymNNkUGpc/WvP2frFdfXI/AAAAAAAAcNE/AmrKcJhayXc8k1spwyKlXfzh03N-GN--QCLcBGAs/s1600/2.jpg',
-//   },
-//   {
-//     title: '3',
-//     url: 'https://toonkor.ai/data/file/wtoon/14964915953302.jpg',
-//   },
-//   {
-//     title: '4',
-//     url: 'https://toonkor.ai/data/file/wtoon/1496491595436.jpg',
-//   },
-//   {
-//     title: '5',
-//     url: 'https://toonkor.ai/data/file/wtoon/14964915955342.jpg',
-//   },
-//   {
-//     title: '6',
-//     url: 'https://toonkor.ai/data/file/wtoon/14964915955665.jpg',
-//   },
-//   {
-//     title: '7',
-//     url: 'https://toonkor.ai/data/file/wtoon/14964915955665.jpg',
-//   },
-//   {
-//     title: '8',
-//     url: 'https://toonkor.ai/data/file/wtoon/14964915955665.jpg',
-//   },
-//   {
-//     title: '9',
-//     url: 'https://toonkor.ai/data/file/wtoon/14964915955665.jpg',
-//   },
-//   {
-//     title: '10',
-//     url: 'https://image.webtoonguide.com/66/68/5b40890a3b24fcd0f854ac956a9d',
-//   },
-// ];
 
 const shareOptions = {
   title: 'Title',
@@ -63,7 +13,7 @@ const shareOptions = {
   subject: 'file',
 };
 
-export class Home extends Component {
+export class DetailToonEps extends Component {
   listAllEp(item) {
     return (
       <View>
@@ -111,7 +61,7 @@ export class Home extends Component {
   }
 }
 
-export default Home;
+export default DetailToonEps;
 
 const styles = StyleSheet.create({
   viewToon: {

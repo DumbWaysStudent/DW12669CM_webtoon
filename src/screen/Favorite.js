@@ -8,7 +8,7 @@ import {FlatList} from 'react-native-gesture-handler';
 
 import {bannersFavorite} from '../components/Banners';
 
-export class Home extends Component {
+export class Favorite extends Component {
   listFavoriteAll(item) {
     return (
       <View style={{flexDirection: 'row'}}>
@@ -56,7 +56,7 @@ export class Home extends Component {
   }
 }
 
-export default Home;
+export default Favorite;
 
 const styles = StyleSheet.create({
   view: {
