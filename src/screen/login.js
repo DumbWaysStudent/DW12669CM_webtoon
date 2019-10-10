@@ -44,7 +44,7 @@ export class App extends Component {
   handleLogin() {
     const changeIndex = StackActions.reset({
       index: 0,
-      actions: [NavigationActions.navigate({routeName: 'navbar'})],
+      actions: [NavigationActions.navigate({routeName: 'home'})],
     });
     this.props.navigation.dispatch(changeIndex);
   }
