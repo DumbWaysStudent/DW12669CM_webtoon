@@ -32,10 +32,10 @@ export class DetailToonEps extends Component {
     return (
       <View style={{flex: 1}}>
         <View>
-          <Header style={{backgroundColor: 'white'}}>
+          <Header style={styles.header}>
             <Left>
               <Button transparent onPress={() => this.handleBack()}>
-                <Icon name="arrow-left" size={30} />
+                <Icon name="arrow-left" size={40} />
               </Button>
             </Left>
             <Body>
@@ -46,7 +46,7 @@ export class DetailToonEps extends Component {
             </Body>
             <Right>
               <Button transparent onPress={() => Share.share(shareOptions)}>
-                <Icon name="share-alt-square" size={30} />
+                <Icon name="share-alt-square" size={40} />
               </Button>
             </Right>
           </Header>
@@ -65,6 +65,10 @@ export class DetailToonEps extends Component {
 export default DetailToonEps;
 
 const styles = StyleSheet.create({
+  header: {
+    backgroundColor: 'white',
+    height: 70,
+  },
   viewToon: {
     marginTop: 2.5,
     marginBottom: 2.5,

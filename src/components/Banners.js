@@ -194,3 +194,76 @@ export const bannersFavorite = [
     url: 'https://t1.daumcdn.net/cfile/tistory/99B6914F5D77D02626',
   },
 ];
+
+export const bannersAddEp = [
+  {
+    title: '1. Cover.jpg',
+    url:
+      'https://4.bp.blogspot.com/-AJymNNkUGpc/WvP2frFdfXI/AAAAAAAAcNE/AmrKcJhayXc8k1spwyKlXfzh03N-GN--QCLcBGAs/s1600/2.jpg',
+  },
+  {
+    title: '2. Introduction.jpg',
+    url:
+      'https://1.bp.blogspot.com/-VVAkreCkVNk/WvP2mv-D7WI/AAAAAAAAcOk/gQ9IEM8BPFIGVjvzhTMqbvEFd99CaIIUQCLcBGAs/s1600/3.jpg',
+  },
+  {
+    title: '3. Gambar 3.jpg',
+    url:
+      'https://4.bp.blogspot.com/-I8bIovq0cOI/WvP2oPdniTI/AAAAAAAAcPE/CNYfJ4bOCjUTK35UQgbCjT9pOYjTXSOqgCLcBGAs/s1600/4.jpg',
+  },
+  {
+    title: '4. Gambar 4.jpg',
+    url:
+      'https://2.bp.blogspot.com/-IEmtLd6yadI/WvP2osnwRMI/AAAAAAAAcPM/UFNya1_YyR05Kv9TbqsB6SAjlbyheVg1QCLcBGAs/s1600/5.jpg',
+  },
+  {
+    title: '5. Gambar 5.jpg',
+    url:
+      'https://2.bp.blogspot.com/-u_Uty4TQUVM/WvP2pDgoPhI/AAAAAAAAcPQ/rtEcE_879KECOi0GiONgsLvUHZZ2FBO2wCLcBGAs/s1600/6.jpg',
+  },
+  {
+    title: '6. Gambar 6.jpg',
+    url:
+      'https://3.bp.blogspot.com/-WvmTdK34Rjg/WvP2qdwWXtI/AAAAAAAAcPc/VEr_m_AIEL0A-aoIJqbzI81F0GA9lJmLwCLcBGAs/s1600/7.jpg',
+  },
+  {
+    title: '7. Gambar 7.jpg',
+    url:
+      'https://4.bp.blogspot.com/-aemId7KA0iY/WvP2rH03THI/AAAAAAAAcPk/jtB1BG90CdkzY-_xZwc4vedOf9hTyECVACLcBGAs/s1600/9.jpg',
+  },
+  {
+    title: '8. Gambar 8.jpg',
+    url:
+      'https://4.bp.blogspot.com/-Wa3q_RxF4YY/WvP2bu772XI/AAAAAAAAcMQ/uy-CVjnhERE8B7RiiHC1zRbH2JTNr9ZUwCLcBGAs/s1600/10.jpg',
+  },
+  {
+    title: '9. Gambar 9.jpg',
+    url:
+      'https://2.bp.blogspot.com/-k8rL3uoNGTc/WvP2cSdv1EI/AAAAAAAAcMU/NybENI0KOnMhdFqnWLq23OToPNOqlJmkQCLcBGAs/s1600/11.jpg',
+  },
+  {
+    title: '10. Gambar 10.jpg',
+    url:
+      'https://1.bp.blogspot.com/-9BC8QV4NOHk/WvP2ckCN-AI/AAAAAAAAcMY/zbyXK8kXA6s3UkNSsvwz35Y0JlnFu0fQwCLcBGAs/s1600/12.jpg',
+  },
+  {
+    title: '11. Gambar 11.jpg',
+    url:
+      'https://4.bp.blogspot.com/-yDL-fIsbxhg/WvP2c7FzFNI/AAAAAAAAcMc/1dQMo3TPnFEsNtZchvmMSaqaF8LBFWFDwCLcBGAs/s1600/13.jpg',
+  },
+  {
+    title: '12. Gambar 12.jpg',
+    url:
+      'https://1.bp.blogspot.com/-mIRlVltqLKE/WvP2dZAHMEI/AAAAAAAAcMg/y4-ye5TD1dYAlhZkbrV329Q_T_dxx96UQCLcBGAs/s1600/14.jpg',
+  },
+  {
+    title: '14. Gambar 14.jpg',
+    url:
+      'https://1.bp.blogspot.com/-r3epMeExUwQ/WvP2d3pou1I/AAAAAAAAcMo/pHwrCFg2sR4LREzON2SSNZvLlHNeBA7qgCLcBGAs/s1600/15.jpg',
+  },
+  {
+    title: '15. Gambar 15.jpg',
+    url:
+      'https://1.bp.blogspot.com/-r3epMeExUwQ/WvP2d3pou1I/AAAAAAAAcMo/pHwrCFg2sR4LREzON2SSNZvLlHNeBA7qgCLcBGAs/s1600/16.jpg',
+  },
+];

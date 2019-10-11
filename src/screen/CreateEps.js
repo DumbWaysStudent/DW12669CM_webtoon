@@ -6,9 +6,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {FlatList} from 'react-native-gesture-handler';
 
-import {bannersEps} from '../components/Banners';
+import {bannersAddEp} from '../components/Banners';
 
-export class CreateToon extends Component {
+export class CreateEps extends Component {
   listFavoriteAll(item) {
     return (
       <View style={{flexDirection: 'row'}}>
@@ -19,7 +19,9 @@ export class CreateToon extends Component {
         </View>
         <View style={styles.listDetailToon}>
           <Text style={styles.title}> {item.title} </Text>
-          <Text style={styles.favorite}> {item.date} </Text>
+          <TouchableOpacity style={styles.delBut}>
+            <Text style={styles.favorite}> Delete </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -29,10 +31,7 @@ export class CreateToon extends Component {
     this.props.navigation.goBack();
   }
   handleFinishAdd() {
-    this.props.navigation.navigate('myWebToon');
-  }
-  addEps() {
-    this.props.navigation.navigate('addEps');
+    this.props.navigation.navigate('createWebToon');
   }
 
   render() {
@@ -45,7 +44,7 @@ export class CreateToon extends Component {
             </TouchableOpacity>
           </Left>
           <Body style={{flex: 8}}>
-            <Title style={styles.titleHeader}> Create Webtoon </Title>
+            <Title style={styles.titleHeader}> Create Episode </Title>
           </Body>
           <Right style={{flex: 1}}>
             <TouchableOpacity onPress={() => this.handleFinishAdd()}>
@@ -55,7 +54,7 @@ export class CreateToon extends Component {
         </Header>
         <View style={{flex: 1}}>
           <View>
-            <Text style={styles.textTitle}> Title </Text>
+            <Text style={styles.textTitle}> Name </Text>
           </View>
           <View style={styles.view}>
             <Input
@@ -68,20 +67,18 @@ export class CreateToon extends Component {
         <View style={{flex: 4, marginTop: 20, marginHorizontal: 20}}>
           <Text style={styles.textEpisode} paddingTop={20}>
             {' '}
-            Episode{' '}
+            Add Images{' '}
           </Text>
           <FlatList
             // style={styles.flatList1}
-            data={bannersEps}
+            data={bannersAddEp}
             renderItem={({item}) => this.listFavoriteAll(item)}
             keyExtractor={item => item.title}
           />
         </View>
         <View style={{flex: 3.1, marginTop: 20, marginHorizontal: 20}}>
-          <TouchableOpacity
-            style={styles.buttonAdd}
-            onPress={() => this.addEps()}>
-            <Text style={styles.buttonAddText}> + Add Episode </Text>
+          <TouchableOpacity style={styles.buttonAdd}>
+            <Text style={styles.buttonAddText}> + Image </Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -89,7 +86,7 @@ export class CreateToon extends Component {
   }
 }
 
-export default CreateToon;
+export default CreateEps;
 
 const styles = {
   header: {
@@ -142,10 +139,23 @@ const styles = {
     fontSize: 30,
     marginTop: 20,
   },
-  favorite: {
-    fontSize: 20,
+  delBut: {
+    marginHorizontal: 10,
+    width: 140,
+    height: 45,
     marginBottom: 20,
-    color: 'grey',
+    backgroundColor: 'red',
+    borderColor: 'black',
+    borderWidth: 2,
+    borderBottomWidth: 5,
+    borderRightWidth: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 3,
+  },
+  favorite: {
+    color: 'white',
+    fontSize: 28,
   },
   buttonAdd: {
     borderColor: 'black',
@@ -168,7 +178,7 @@ const styles = {
   },
   textTitle: {
     fontSize: 45,
-    marginRight: 30,
+    marginRight: 20,
   },
   textEpisode: {
     fontSize: 45,

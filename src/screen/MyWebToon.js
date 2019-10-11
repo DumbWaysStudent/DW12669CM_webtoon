@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: 'white',
     height: 100,
+    borderBottomColor: 'grey',
   },
   titleHeader: {
     color: 'black',
