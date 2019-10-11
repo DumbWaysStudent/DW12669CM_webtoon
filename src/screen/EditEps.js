@@ -6,37 +6,35 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {FlatList} from 'react-native-gesture-handler';
 
-import {bannersEps} from '../components/Banners';
+import {bannersAddEp} from '../components/Banners';
 
-export class EditWebtoon extends Component {
+export class EditEps extends Component {
   listFavoriteAll(item) {
     return (
       <View style={{flexDirection: 'row'}}>
         <View>
-          <TouchableOpacity onPress={() => this.editEps(item.title)}>
+          <TouchableOpacity onPress={() => this.handleDetail()}>
             <Image source={{uri: item.url}} style={styles.listToon} />
           </TouchableOpacity>
         </View>
         <View style={styles.listDetailToon}>
           <Text style={styles.title}> {item.title} </Text>
-          <Text style={styles.favorite}> {item.date} </Text>
+          <TouchableOpacity style={styles.delBut}>
+            <Text style={styles.favorite}> Delete </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
   }
-  editEps(item) {
-    this.props.navigation.navigate('editEps', {title: item});
-  }
+  handleDetail() {}
+  delEps() {}
+  addImg() {}
   handleBack() {
     this.props.navigation.goBack();
   }
   handleFinishAdd() {
-    this.props.navigation.navigate('myWebToon');
+    this.props.navigation.navigate('editWebtoon');
   }
-  addEps() {
-    this.props.navigation.navigate('addEps');
-  }
-  delWeb() {}
 
   render() {
     return (
@@ -48,7 +46,7 @@ export class EditWebtoon extends Component {
             </TouchableOpacity>
           </Left>
           <Body style={{flex: 8}}>
-            <Title style={styles.titleHeader}> Edit Webtoon </Title>
+            <Title style={styles.titleHeader}> Edit Episode </Title>
           </Body>
           <Right style={{flex: 1}}>
             <TouchableOpacity onPress={() => this.handleFinishAdd()}>
@@ -58,39 +56,42 @@ export class EditWebtoon extends Component {
         </Header>
         <View style={{flex: 1}}>
           <View>
-            <Text style={styles.textTitle}> Title </Text>
+            <Text style={styles.textTitle}> Name </Text>
           </View>
           <View style={styles.view}>
             <Input
               style={styles.search}
               autoCapitalize="none"
-              placeholder="Type in the title">
-              <Text>{this.props.navigation.getParam('title')}</Text>
+              placeholder="Type your webtoon title">
+              <Text style={styles.eps}>
+                {' '}
+                {this.props.navigation.getParam('title')}{' '}
+              </Text>
             </Input>
           </View>
         </View>
         <View style={{flex: 4, marginTop: 20, marginHorizontal: 20}}>
           <Text style={styles.textEpisode} paddingTop={20}>
             {' '}
-            Episode{' '}
+            Add Images{' '}
           </Text>
           <FlatList
             // style={styles.flatList1}
-            data={bannersEps}
+            data={bannersAddEp}
             renderItem={({item}) => this.listFavoriteAll(item)}
             keyExtractor={item => item.title}
           />
         </View>
-        <View style={styles.viewAddDel}>
+        <View style={{flex: 3.1, marginTop: 20, marginHorizontal: 20}}>
           <TouchableOpacity
             style={styles.buttonAdd}
-            onPress={() => this.addEps()}>
-            <Text style={styles.buttonAddText}> + Add Episode </Text>
+            onPress={() => this.addImg()}>
+            <Text style={styles.buttonAddText}> + Image </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.buttonDel}
-            onPress={() => this.delWeb()}>
-            <Text style={styles.buttonDelText}> Delete Webtoon </Text>
+            onPress={() => this.delEps()}>
+            <Text style={styles.buttonDelText}> Delete Episode </Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -98,7 +99,7 @@ export class EditWebtoon extends Component {
   }
 }
 
-export default EditWebtoon;
+export default EditEps;
 
 const styles = {
   header: {
@@ -128,8 +129,6 @@ const styles = {
     justifyContent: 'center',
     marginRight: 5,
     marginTop: 4,
-    fontSize: 30,
-    fontWeight: 'bold',
   },
   toon: {
     justifyContent: 'center',
@@ -153,16 +152,23 @@ const styles = {
     fontSize: 30,
     marginTop: 20,
   },
-  favorite: {
-    fontSize: 20,
+  delBut: {
+    marginHorizontal: 10,
+    width: 140,
+    height: 45,
     marginBottom: 20,
-    color: 'grey',
+    backgroundColor: 'red',
+    borderColor: 'black',
+    borderWidth: 2,
+    borderBottomWidth: 5,
+    borderRightWidth: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 3,
   },
-  viewAddDel: {
-    flex: 3.0,
-    marginTop: 20,
-    marginHorizontal: 20,
-    marginBottom: 20,
+  favorite: {
+    color: 'white',
+    fontSize: 28,
   },
   buttonAdd: {
     borderColor: 'black',
@@ -176,6 +182,26 @@ const styles = {
     borderBottomWidth: 7,
     borderRightWidth: 7,
     borderRadius: 10,
+    marginBottom: 20,
+  },
+  buttonAddText: {
+    fontSize: 40,
+  },
+  iconHeader: {
+    fontSize: 45,
+  },
+  textTitle: {
+    fontSize: 45,
+    marginRight: 20,
+  },
+  textEpisode: {
+    fontSize: 45,
+    marginRight: -20,
+  },
+  viewAddDel: {
+    flex: 3.0,
+    marginTop: 20,
+    marginHorizontal: 20,
     marginBottom: 20,
   },
   buttonDel: {
@@ -193,22 +219,12 @@ const styles = {
     marginBottom: 20,
     backgroundColor: 'red',
   },
-  buttonAddText: {
-    fontSize: 40,
-  },
   buttonDelText: {
     fontSize: 40,
     color: 'white',
   },
-  iconHeader: {
-    fontSize: 45,
-  },
-  textTitle: {
-    fontSize: 45,
-    marginRight: 30,
-  },
-  textEpisode: {
-    fontSize: 45,
-    marginRight: -20,
+  eps: {
+    fontSize: 30,
+    fontWeight: 'bold',
   },
 };
