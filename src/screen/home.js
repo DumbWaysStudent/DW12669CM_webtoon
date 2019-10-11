@@ -15,7 +15,7 @@ export class Home extends Component {
       <View>
         <TouchableOpacity onPress={() => this.handleDetail()}>
           <Image source={{uri: item.url}} style={styles.favoriteToon} />
-          <Text style={{alignSelf: 'center'}}> {item.title} </Text>
+          <Text style={styles.text}> {item.title} </Text>
         </TouchableOpacity>
       </View>
     );
@@ -127,5 +127,9 @@ const styles = StyleSheet.create({
   },
   favorite: {
     fontSize: 40,
+  },
+  text: {
+    alignSelf: 'center',
+    fontSize: 20,
   },
 });

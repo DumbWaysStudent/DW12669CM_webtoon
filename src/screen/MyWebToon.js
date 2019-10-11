@@ -13,7 +13,7 @@ export class MyWebToon extends Component {
     return (
       <View style={{flexDirection: 'row'}}>
         <View>
-          <TouchableOpacity onPress={() => this.handleDetail()}>
+          <TouchableOpacity onPress={() => this.handleDetail(item.title)}>
             <Image source={{uri: item.url}} style={styles.listToon} />
           </TouchableOpacity>
         </View>
@@ -24,12 +24,14 @@ export class MyWebToon extends Component {
       </View>
     );
   }
-  handleDetail() {}
   handleBack() {
     this.props.navigation.goBack();
   }
   createWebToon() {
     this.props.navigation.navigate('createWebToon');
+  }
+  handleDetail(title) {
+    this.props.navigation.navigate('editWebtoon', {title: title});
   }
 
   render() {
