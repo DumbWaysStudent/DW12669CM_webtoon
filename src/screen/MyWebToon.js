@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {View, StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
-import {Header, Left, Body, Title} from 'native-base';
+import {Header, Left, Body, Title, Fab} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {FlatList} from 'react-native-gesture-handler';
@@ -51,6 +51,15 @@ export class MyWebToon extends Component {
             renderItem={({item}) => this.listFavoriteAll(item)}
             keyExtractor={item => item.title}
           />
+        </View>
+        <View>
+          <Fab
+            active="true"
+            containerStyle={{}}
+            style={{backgroundColor: 'orange', width: 70, height: 70}}
+            position="bottomRight">
+            <Icon style={styles.iconProfile} name="plus" />
+          </Fab>
         </View>
       </View>
     );
@@ -113,5 +122,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginBottom: 20,
     color: 'grey',
+  },
+  iconProfile: {
+    fontSize: 50,
+    color: 'white',
   },
 });
