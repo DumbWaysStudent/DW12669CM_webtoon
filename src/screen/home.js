@@ -49,7 +49,7 @@ export class Home extends Component {
         <View style={{flex: 1}}>
           <View style={styles.view}>
             <Input
-              style={styles.searchBar}
+              style={styles.search}
               autoCapitalize="none"
               keyboardType="email-address"
               placeholder="Looking for something ..."
@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     marginRight: 10,
     marginTop: 5,
+    borderRadius: 5,
   },
   favoriteToon: {
     height: 200,
@@ -102,6 +103,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderColor: 'black',
     marginRight: 10,
+    borderRadius: 5,
   },
   search: {
     justifyContent: 'center',
@@ -114,6 +116,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     marginTop: 5,
     height: 60,
+    borderRadius: 5,
   },
   icon: {
     width: 40,

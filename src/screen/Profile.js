@@ -1,17 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  Image,
-  Share,
-} from 'react-native';
-import {Button, Header, Title, Right, Body} from 'native-base';
+import {View, TouchableOpacity, Text} from 'react-native';
+import {Header, Title, Right, Body} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export class Profile extends Component {
+  handleEditProfile() {
+    this.props.navigation.navigate('editProfile');
+  }
+  handleMytoon() {
+    this.props.navigation.navigate('myWebToon');
+  }
   render() {
     return (
       <View style={{flex: 1}}>
@@ -21,9 +20,9 @@ export class Profile extends Component {
               <Title style={styles.titleHeader}> Profile </Title>
             </Body>
             <Right>
-              <Button transparent onPress={() => this.handleEdiProfile}>
+              <TouchableOpacity onPress={() => this.handleEditProfile()}>
                 <Icon name="pencil" style={styles.iconHeader} />
-              </Button>
+              </TouchableOpacity>
             </Right>
           </Header>
         </View>
@@ -33,7 +32,9 @@ export class Profile extends Component {
         </View>
         <View style={{flex: 5.2}}>
           <View style={styles.viewButtonText}>
-            <TouchableOpacity style={styles.opacity}>
+            <TouchableOpacity
+              style={styles.opacity}
+              onPress={() => this.handleMytoon()}>
               <Text style={styles.text}> My Webtoon Creation </Text>
               <Icon name="angle-right" style={styles.iconButtonText} />
             </TouchableOpacity>
@@ -63,6 +64,7 @@ const styles = {
   iconHeader: {
     color: 'orange',
     fontSize: 50,
+    marginRight: 10,
   },
   profile: {
     alignSelf: 'center',

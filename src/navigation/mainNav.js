@@ -2,9 +2,11 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
 import login from '../screen/Login';
-import navbar from './NavBarHome';
+import navBar from './NavBarHome';
 import detailToon from '../screen/DetailToon';
 import detailToonEps from '../screen/DetailToonEps';
+import editProfile from '../screen/EditProfile';
+import myWebToon from '../screen/MyWebToon';
 
 const mainNav = createStackNavigator(
   {
@@ -15,7 +17,7 @@ const mainNav = createStackNavigator(
       }),
     },
     home: {
-      screen: navbar,
+      screen: navBar,
       navigationOptions: ({navigation}) => ({
         header: null,
       }),
@@ -32,9 +34,21 @@ const mainNav = createStackNavigator(
         header: null,
       }),
     },
+    editProfile: {
+      screen: editProfile,
+      navigationOptions: ({navigation}) => ({
+        header: null,
+      }),
+    },
+    myWebToon: {
+      screen: myWebToon,
+      navigationOptions: ({navigation}) => ({
+        header: null,
+      }),
+    },
   },
   {
-    initialRouteName: 'login',
+    initialRouteName: 'home',
   },
 );
 

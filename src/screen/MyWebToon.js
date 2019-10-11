@@ -1,14 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {View, StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
-import {Input} from 'native-base';
+import {Header, Left, Body, Title} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {FlatList} from 'react-native-gesture-handler';
 
 import {bannersFavorite} from '../components/Banners';
 
-export class Favorite extends Component {
+export class MyWebToon extends Component {
   listFavoriteAll(item) {
     return (
       <View style={{flexDirection: 'row'}}>
@@ -19,31 +19,32 @@ export class Favorite extends Component {
         </View>
         <View style={styles.listDetailToon}>
           <Text style={styles.title}> {item.title} </Text>
-          <Text style={styles.favorite}> {item.favorite} </Text>
+          <Text style={styles.favorite}> {item.ep} </Text>
         </View>
       </View>
     );
   }
-
-  handleDetail() {
-    this.props.navigation.navigate('');
+  handleDetail() {}
+  handleBack() {
+    this.props.navigation.goBack();
   }
 
   render() {
     return (
-      <View marginHorizontal={20} style={{flex: 1}}>
-        <View style={{flex: 0.8}}>
-          <View style={styles.view}>
-            <Input
-              style={styles.searchBar}
-              autoCapitalize="none"
-              keyboardType="email-address"
-              placeholder="Looking for something ..."
-            />
-            <Icon name="search" size={40} style={styles.search} />
-          </View>
+      <View style={{flex: 1}}>
+        <View>
+          <Header style={styles.header}>
+            <Left>
+              <TouchableOpacity transparent onPress={() => this.handleBack()}>
+                <Icon name="arrow-left" size={30} />
+              </TouchableOpacity>
+            </Left>
+            <Body>
+              <Title style={styles.titleHeader}> My Webtoon </Title>
+            </Body>
+          </Header>
         </View>
-        <View style={{flex: 9.2}}>
+        <View style={{flex: 9, marginTop: 20, marginHorizontal: 20}}>
           <FlatList
             // style={styles.flatList1}
             data={bannersFavorite}
@@ -56,9 +57,17 @@ export class Favorite extends Component {
   }
 }
 
-export default Favorite;
+export default MyWebToon;
 
 const styles = StyleSheet.create({
+  header: {
+    backgroundColor: 'white',
+    height: 100,
+  },
+  titleHeader: {
+    color: 'black',
+    fontSize: 40,
+  },
   view: {
     flexDirection: 'row',
     borderColor: 'black',

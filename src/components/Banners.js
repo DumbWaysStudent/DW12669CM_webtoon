@@ -164,27 +164,32 @@ export const bannersFavorite = [
   {
     title: '릴리스 코드',
     favorite: '1.000.000 Favorite',
+    ep: '32 Episode(s)',
     url:
       'http://postfiles3.naver.net/20160626_34/juderland_1466924213290Heosh_JPEG/%C1%A6%B8%F1re.jpg?type=w2',
   },
   {
     title: '동네 누나',
+    ep: '61 Episode(s)',
     favorite: '542.510 Favorite',
     url:
       'https://2.bp.blogspot.com/-bCqRFKQEU7A/XI1Sl4J7k_I/AAAAAAAAACQ/Y9jJBNemwCEHAb9LJC0aNHs80tF1l_pewCLcBGAs/s400/20190316_233825.png',
   },
   {
     title: '유리의 아르바이트',
+    ep: '93 Episode(s)',
     favorite: '230.450 Favorite',
     url: 'https://image.webtoonguide.com/fe/b7/3cc0163681b2c8d23b6209a7d22a',
   },
   {
     title: 'Tsumi To Kai',
+    ep: '27 Episode(s)',
     favorite: '570.000 Favorite',
     url: 'https://f01.mrcdn.info/file/mrportal/h/c/1/f/So.AUrX32c.jpg',
   },
   {
     title: '퍼펙트 하프',
+    ep: '44 Episode(s)',
     favorite: '11.982.120 Favorite',
     url: 'https://t1.daumcdn.net/cfile/tistory/99B6914F5D77D02626',
   },
