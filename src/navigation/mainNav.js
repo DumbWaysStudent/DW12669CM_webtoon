@@ -76,7 +76,7 @@ const mainNav = createStackNavigator(
     },
   },
   {
-    initialRouteName: 'home',
+    initialRouteName: 'login',
   },
 );
 
