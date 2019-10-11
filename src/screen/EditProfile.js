@@ -38,7 +38,7 @@ export class EditProfile extends Component {
     });
   }
   handleEditProfile() {
-    this.props.navigation.goBack();
+    this.props.navigation.navigate('Profile');
   }
 
   render() {

@@ -7,6 +7,7 @@ import {
   Text,
   Image,
   Share,
+  Dimensions,
 } from 'react-native';
 import {Button, Header, Left, Title, Right, Body} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -68,7 +69,11 @@ export class DetailToon extends Component {
           </Header>
         </View>
         <View style={styles.viewToon}>
-          <Image source={{uri: bannersEps[4].url}} style={styles.toon} />
+          <Image
+            name="image"
+            source={{uri: bannersEps[4].url}}
+            style={styles.toon}
+          />
         </View>
         <View style={{flex: 5.75}}>
           <FlatList
@@ -94,8 +99,8 @@ const styles = StyleSheet.create({
   },
   toon: {
     justifyContent: 'center',
-    width: '100%',
-    height: 400,
+    width: 603,
+    height: 419,
   },
   listToon: {
     height: 120,

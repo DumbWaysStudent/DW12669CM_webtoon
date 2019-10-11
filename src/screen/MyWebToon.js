@@ -28,6 +28,9 @@ export class MyWebToon extends Component {
   handleBack() {
     this.props.navigation.goBack();
   }
+  createWebToon() {
+    this.props.navigation.navigate('createWebToon');
+  }
 
   render() {
     return (
@@ -36,7 +39,7 @@ export class MyWebToon extends Component {
           <Header style={styles.header}>
             <Left>
               <TouchableOpacity transparent onPress={() => this.handleBack()}>
-                <Icon name="arrow-left" size={30} />
+                <Icon name="arrow-left" size={45} />
               </TouchableOpacity>
             </Left>
             <Body>
@@ -54,6 +57,7 @@ export class MyWebToon extends Component {
         </View>
         <View>
           <Fab
+            onPress={() => this.createWebToon()}
             active="true"
             containerStyle={{}}
             style={{backgroundColor: 'orange', width: 70, height: 70}}

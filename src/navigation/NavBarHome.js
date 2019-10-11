@@ -5,7 +5,16 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import home from '../screen/Home';
 import favorite from '../screen/Favorite';
 import profile from '../screen/Profile';
+import editProfile from '../screen/EditProfile';
 
+const stack = {
+  Profile: {
+    screen: profile,
+  },
+  editProfile: {
+    screen: editProfile,
+  },
+};
 export default createMaterialBottomTabNavigator(
   {
     Home: {

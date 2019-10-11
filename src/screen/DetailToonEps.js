@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {View, StyleSheet, Image, Share} from 'react-native';
 import {Button, Header, Left, Title, Right, Body} from 'native-base';

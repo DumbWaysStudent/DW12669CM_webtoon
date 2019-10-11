@@ -7,6 +7,7 @@ import detailToon from '../screen/DetailToon';
 import detailToonEps from '../screen/DetailToonEps';
 import editProfile from '../screen/EditProfile';
 import myWebToon from '../screen/MyWebToon';
+import creatWebToon from '../screen/CreateToon';
 
 const mainNav = createStackNavigator(
   {
@@ -42,6 +43,12 @@ const mainNav = createStackNavigator(
     },
     myWebToon: {
       screen: myWebToon,
+      navigationOptions: ({navigation}) => ({
+        header: null,
+      }),
+    },
+    createWebToon: {
+      screen: creatWebToon,
       navigationOptions: ({navigation}) => ({
         header: null,
       }),
