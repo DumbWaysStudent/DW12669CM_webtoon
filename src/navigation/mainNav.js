@@ -3,9 +3,10 @@ import {createStackNavigator} from 'react-navigation-stack';
 
 import login from '../screen/Login';
 import navBar from './NavBarHome';
+import editProfile from './NavBarHome';
 import detailToon from '../screen/DetailToon';
 import detailToonEps from '../screen/DetailToonEps';
-import editProfile from '../screen/EditProfile';
+// import editProfile from '../screen/EditProfile';
 import myWebToon from '../screen/MyWebToon';
 import creatWebToon from '../screen/CreateToon';
 import addEps from '../screen/CreateEps';
@@ -76,7 +77,7 @@ const mainNav = createStackNavigator(
     },
   },
   {
-    initialRouteName: 'login',
+    initialRouteName: 'home',
   },
 );
 

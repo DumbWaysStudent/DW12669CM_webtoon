@@ -1,20 +1,27 @@
 import React from 'react';
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {createStackNavigator} from 'react-navigation-stack';
 
 import home from '../screen/Home';
 import favorite from '../screen/Favorite';
 import profile from '../screen/Profile';
 import editProfile from '../screen/EditProfile';
 
-const stack = {
+const stack = createStackNavigator({
   Profile: {
     screen: profile,
+    navigationOptions: {
+      header: null,
+    },
   },
   editProfile: {
     screen: editProfile,
+    navigationOptions: {
+      header: null,
+    },
   },
-};
+});
 export default createMaterialBottomTabNavigator(
   {
     Home: {
@@ -36,7 +43,7 @@ export default createMaterialBottomTabNavigator(
       },
     },
     Profile: {
-      screen: profile,
+      screen: stack,
       navigationOptions: {
         tabBarLabel: 'Profile',
         tabBarIcon: ({tintColor}) => (

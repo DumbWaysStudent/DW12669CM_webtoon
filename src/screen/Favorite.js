@@ -29,18 +29,25 @@ export class Favorite extends Component {
     this.props.navigation.navigate('');
   }
 
+  handleSearch(item) {
+    const data = {bannersFavorite};
+  }
+
   render() {
     return (
       <View marginHorizontal={20} style={{flex: 1}}>
-        <View style={{flex: 0.8}}>
+        <View style={{flex: 1.5, marginTop: 15}}>
           <View style={styles.view}>
             <Input
               style={styles.searchBar}
               autoCapitalize="none"
               keyboardType="email-address"
               placeholder="Looking for something ..."
+              onChangeText={item => this.handleSearch(item)}
             />
-            <Icon name="search" size={40} style={styles.search} />
+            <TouchableOpacity>
+              <Icon name="search" size={40} style={styles.search} />
+            </TouchableOpacity>
           </View>
         </View>
         <View style={{flex: 9.2}}>

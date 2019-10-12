@@ -3,10 +3,10 @@ import React, {Component} from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
 import {Header, Title, Right, Body} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+const name = 'Cerkhachacu';
 export class Profile extends Component {
-  handleEditProfile() {
-    this.props.navigation.navigate('editProfile');
+  handleEditProfile(item) {
+    this.props.navigation.navigate('editProfile', {name: item});
   }
   handleMytoon() {
     this.props.navigation.navigate('myWebToon');
@@ -20,7 +20,7 @@ export class Profile extends Component {
               <Title style={styles.titleHeader}> Profile </Title>
             </Body>
             <Right>
-              <TouchableOpacity onPress={() => this.handleEditProfile()}>
+              <TouchableOpacity onPress={() => this.handleEditProfile(name)}>
                 <Icon name="pencil" style={styles.iconHeader} />
               </TouchableOpacity>
             </Right>
@@ -28,7 +28,7 @@ export class Profile extends Component {
         </View>
         <View style={styles.profile}>
           <Icon name="user-circle" style={styles.iconProfile} />
-          <Text style={styles.iconName}>Cerkhachacu</Text>
+          <Text style={styles.iconName}>{name}</Text>
         </View>
         <View style={{flex: 5.2}}>
           <View style={styles.viewButtonText}>
@@ -40,7 +40,9 @@ export class Profile extends Component {
             </TouchableOpacity>
           </View>
           <View style={styles.viewButtonText}>
-            <TouchableOpacity style={styles.opacity}>
+            <TouchableOpacity
+              style={styles.opacity}
+              onPress={() => this.props.navigation.navigate('login')}>
               <Text style={styles.text}> Log Out </Text>
             </TouchableOpacity>
           </View>
@@ -81,7 +83,7 @@ const styles = {
   },
   viewButtonText: {
     borderColor: 'black',
-    borderWidth: 1.5,
+    borderWidth: 1.1,
     flex: 0.13,
   },
   opacity: {

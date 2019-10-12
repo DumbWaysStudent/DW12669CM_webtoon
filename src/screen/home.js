@@ -1,6 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {View, StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  Image,
+  ScrollView,
+} from 'react-native';
 import {Input, Button} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -31,7 +38,11 @@ export class Home extends Component {
         <View style={styles.viewToon}>
           <Text style={{fontSize: 30}}> {item.title} </Text>
           <Button
-            style={{backgroundColor: '#FF9E1B', justifyContent: 'center'}}>
+            style={{
+              backgroundColor: '#FF9E1B',
+              justifyContent: 'center',
+              width: 150,
+            }}>
             <Text style={{fontSize: 35, width: 150}}> + Favorite</Text>
           </Button>
         </View>
@@ -46,37 +57,39 @@ export class Home extends Component {
   render() {
     return (
       <View marginHorizontal={20} style={{flex: 1}}>
-        <View style={{flex: 1}}>
-          <View style={styles.view}>
-            <Input
-              style={styles.search}
-              autoCapitalize="none"
-              keyboardType="email-address"
-              placeholder="Looking for something ..."
-            />
-            <Icon name="search" size={40} style={styles.search} />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={{flex: 1}}>
+            <View style={styles.view}>
+              <Input
+                style={styles.search}
+                autoCapitalize="none"
+                keyboardType="email-address"
+                placeholder="Looking for something ..."
+              />
+              <Icon name="search" style={styles.search} />
+            </View>
           </View>
-        </View>
-        <View style={{flex: 12}}>
-          <SlideshowTools />
-          <View>
-            <Text style={styles.favorite}>Favorite</Text>
+          <View style={{flex: 12}}>
+            <SlideshowTools />
+            <View>
+              <Text style={styles.favorite}>Favorite</Text>
+              <FlatList
+                // style={styles.flatList1}
+                data={bannersHome}
+                renderItem={({item}) => this.listFavorite(item)}
+                keyExtractor={item => item.title}
+                horizontal
+              />
+            </View>
+            <Text style={styles.favorite}>All</Text>
             <FlatList
               // style={styles.flatList1}
               data={bannersHome}
-              renderItem={({item}) => this.listFavorite(item)}
+              renderItem={({item}) => this.listFavoriteAll(item)}
               keyExtractor={item => item.title}
-              horizontal
             />
           </View>
-          <Text style={styles.favorite}>All</Text>
-          <FlatList
-            // style={styles.flatList1}
-            data={bannersHome}
-            renderItem={({item}) => this.listFavoriteAll(item)}
-            keyExtractor={item => item.title}
-          />
-        </View>
+        </ScrollView>
       </View>
     );
   }
@@ -109,12 +122,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 5,
     marginTop: 4,
+    fontSize: 30,
   },
   view: {
     flexDirection: 'row',
     borderColor: 'black',
     borderWidth: 3,
-    marginTop: 5,
+    marginTop: 20,
     height: 60,
     borderRadius: 5,
   },

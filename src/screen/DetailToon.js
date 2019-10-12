@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   toon: {
     justifyContent: 'center',
     width: 603,
-    height: 419,
+    height: 395,
   },
   listToon: {
     height: 120,

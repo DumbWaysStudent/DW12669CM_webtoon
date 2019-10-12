@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {View, TouchableOpacity, Image} from 'react-native';
-import {Input, Header, Title, Right, Body} from 'native-base';
+import {Input, Header, Title, Right, Body, Text} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ImagePicker from 'react-native-image-picker';
 
@@ -16,6 +16,7 @@ export class EditProfile extends Component {
   state = {
     avatarSource: '',
     name: '',
+    profilename: this.props.navigation.getParam('name'),
   };
   imageProfile() {
     ImagePicker.showImagePicker(options, response => {
@@ -27,9 +28,9 @@ export class EditProfile extends Component {
       } else if (response.customButton) {
         console.log('User tapped custom button: ', response.customButton);
       } else {
-        //const source = {uri: response.uri};
+        const source = {uri: response.uri};
         // You can also display the image using data:
-        const source = {uri: 'data:image/jpeg;base64,' + response.data};
+        // const source = {uri: 'data:image/jpeg;base64,' + response.data};
 
         this.setState({
           avatarSource: source,
@@ -39,6 +40,11 @@ export class EditProfile extends Component {
   }
   handleEditProfile() {
     this.props.navigation.navigate('Profile');
+  }
+  input(item) {
+    this.setState({
+      profilename: item,
+    });
   }
 
   render() {
@@ -78,6 +84,8 @@ export class EditProfile extends Component {
               style={styles.search}
               autoCapitalize="none"
               placeholder="Type your name"
+              value={this.state.profilename}
+              onChangeText={text => this.input(text)}
             />
           </View>
         </View>

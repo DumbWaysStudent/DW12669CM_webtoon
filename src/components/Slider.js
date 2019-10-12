@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 
 import Slideshow from 'react-native-image-slider-show';
-import {bannersEps} from './Banners';
+import {bannersFavorite} from './Banners';
 
 export default class SlideshowTools extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ export default class SlideshowTools extends Component {
     this.state = {
       position: 1,
       interval: null,
-      dataSource: bannersEps,
+      dataSource: bannersFavorite,
     };
   }
   componentWillMount() {
@@ -41,7 +41,7 @@ export default class SlideshowTools extends Component {
     );
   }
 }
-const styles = StyleSheet.create({
+const styles = {
   showBorder: {
     height: 270,
     marginTop: 5,
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 5,
   },
-});
+};
