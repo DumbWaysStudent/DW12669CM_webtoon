@@ -1,10 +1,18 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
-import {Header, Title, Right, Body} from 'native-base';
+import {Header, Title, Right, Body, Image} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const name = 'Cerkhachacu';
+// const image= this.props.navigation.getParam('image');
+// const profName= this.props.navigation.getParam('name');
 export class Profile extends Component {
+  state = {
+    // image: this.props.navigation.getParam('image'),
+    // name: this.props.navigation.getParam('name'),
+    image: '',
+    name: '',
+  };
   handleEditProfile(item) {
     this.props.navigation.navigate('editProfile', {name: item});
   }
@@ -26,10 +34,17 @@ export class Profile extends Component {
             </Right>
           </Header>
         </View>
-        <View style={styles.profile}>
-          <Icon name="user-circle" style={styles.iconProfile} />
-          <Text style={styles.iconName}>{name}</Text>
-        </View>
+        {this.state.image === '' ? (
+          <View style={styles.profile}>
+            <Icon name="user-circle" style={styles.iconProfile} />
+            <Text style={styles.iconName}>Cerkhachacu</Text>
+          </View>
+        ) : (
+          <View style={styles.profile}>
+            <Image style={styles.imageProfile} source={this.state.image} />
+            <Text style={styles.iconName}>{this.state.name}</Text>
+          </View>
+        )}
         <View style={{flex: 5.2}}>
           <View style={styles.viewButtonText}>
             <TouchableOpacity
@@ -99,5 +114,12 @@ const styles = {
     flex: 1,
     marginTop: 5,
     fontSize: 40,
+  },
+  imageProfile: {
+    alignSelf: 'center',
+    width: 200,
+    height: 200,
+    marginTop: 25,
+    borderRadius: 100,
   },
 };

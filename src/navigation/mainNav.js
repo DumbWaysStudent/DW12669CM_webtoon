@@ -39,12 +39,6 @@ const mainNav = createStackNavigator(
         header: null,
       }),
     },
-    editProfile: {
-      screen: editProfile,
-      navigationOptions: ({navigation}) => ({
-        header: null,
-      }),
-    },
     myWebToon: {
       screen: myWebToon,
       navigationOptions: ({navigation}) => ({

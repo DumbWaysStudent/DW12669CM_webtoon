@@ -42,7 +42,7 @@ export default createMaterialBottomTabNavigator(
         ),
       },
     },
-    Profile: {
+    Stack: {
       screen: stack,
       navigationOptions: {
         tabBarLabel: 'Profile',
@@ -54,7 +54,7 @@ export default createMaterialBottomTabNavigator(
   },
   {
     intialRouteName: 'Home',
-    order: ['Home', 'Favorite', 'Profile'],
+    order: ['Home', 'Favorite', 'Stack'],
     activeColor: 'orange',
     barStyle: {backgroundColor: 'white', paddingBottom: 15},
     borderTopColor: 'silver',

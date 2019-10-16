@@ -38,5 +38,17 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DumbWaysStudent/DW12669CM_webtoon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DumbWaysStudent/DW12669CM_webtoon/issues"
+  },
+  "homepage": "https://github.com/DumbWaysStudent/DW12669CM_webtoon#readme",
+  "description": ""
 }

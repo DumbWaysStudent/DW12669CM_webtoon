@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {View, TouchableOpacity, Image} from 'react-native';
-import {Input, Header, Title, Right, Body, Text} from 'native-base';
+import {Input, Header, Title, Right, Body} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ImagePicker from 'react-native-image-picker';
 
@@ -38,10 +38,10 @@ export class EditProfile extends Component {
       }
     });
   }
-  handleEditProfile() {
-    this.props.navigation.navigate('Profile');
+  handleEditProfile(a, b) {
+    this.props.navigation.navigate('Profile', {name: 'b'}, {image: 'a'});
   }
-  input(item) {
+  inputText(item) {
     this.setState({
       profilename: item,
     });
@@ -56,7 +56,13 @@ export class EditProfile extends Component {
               <Title style={styles.titleHeader}> Edit Profile </Title>
             </Body>
             <Right>
-              <TouchableOpacity onPress={() => this.handleEditProfile()}>
+              <TouchableOpacity
+                onPress={() =>
+                  this.handleEditProfile(
+                    this.state.avatarSource,
+                    this.state.profilename,
+                  )
+                }>
                 <Icon name="check" style={styles.iconHeader} />
               </TouchableOpacity>
             </Right>
@@ -85,7 +91,7 @@ export class EditProfile extends Component {
               autoCapitalize="none"
               placeholder="Type your name"
               value={this.state.profilename}
-              onChangeText={text => this.input(text)}
+              onChangeText={text => this.inputText(text)}
             />
           </View>
         </View>
@@ -131,6 +137,7 @@ const styles = {
     marginTop: 4,
     fontSize: 45,
     justifyContent: 'center',
+    alignSelf: 'center',
   },
   view: {
     borderColor: 'black',
