@@ -20,7 +20,8 @@ app.group('/api/v1', router => {
     res.send('Hello World!');
   });
   //auth API
-  router.post('/login', AuthController.login);
+  router.post('/login', AuthController.signIn);
+  router.post('/register', AuthController.signUp);
   //
   router.get('/webtoons/', TodoController.showAllToon);
   router.get('/user/', TodoController.showAllUser);

@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const models = require('../models');
 const User = models.users;
 
-exports.login = (req, res) => {
+exports.signIn = (req, res) => {
   const email = req.body.email;
   const password = req.body.password; //
 
@@ -18,6 +18,26 @@ exports.login = (req, res) => {
       res.send({
         error: true,
         message: 'wrong email or password',
+      });
+    }
+  });
+};
+
+exports.signUp = (req, res) => {
+  const email = req.body.email;
+  User.findOne({where: {email}}).then(user => {
+    if (user) {
+      res.send({
+        error: true,
+        message: 'Email Sudah Terdaftar',
+      });
+    } else {
+      User.create(req.body).then(item => {
+        const token = jwt.sign({userId: item.id}, 'my-secret-key');
+        res.send({
+          username: item.name,
+          token,
+        });
       });
     }
   });
