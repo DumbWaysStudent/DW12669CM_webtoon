@@ -22,8 +22,12 @@ app.group('/api/v1', router => {
   //auth API
   router.post('/login', AuthController.signIn);
   router.post('/register', AuthController.signUp);
-  //
+  //webtoons
   router.get('/webtoons/', TodoController.showAllToon);
+  router.get('/webtoon/:title', TodoController.findToonTitle);
+  //Favourite
+  router.get('/favourite/:id', TodoController.showFavourite);
+  //users
   router.get('/user/', TodoController.showAllUser);
 });
 

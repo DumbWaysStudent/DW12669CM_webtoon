@@ -1,30 +1,28 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('webtoons', {
+    return queryInterface.createTable('favourites', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      title: {
-        type: Sequelize.STRING,
-      },
-      genre: {
-        type: Sequelize.STRING,
-      },
-      fav_count: {
-        type: Sequelize.INTEGER,
-      },
-      image: {
-        type: Sequelize.STRING,
-      },
-      created_by: {
+      user: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'users',
+          key: 'id',
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade',
+      },
+      webtoon: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'webtoons',
           key: 'id',
         },
         onUpdate: 'cascade',
@@ -45,6 +43,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('webtoons');
+    return queryInterface.dropTable('favourites');
   },
 };

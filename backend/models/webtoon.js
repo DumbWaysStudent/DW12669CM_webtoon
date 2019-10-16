@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
   );
   webtoon.associate = function(models) {
     // associations can be defined here
+    webtoon.belongsTo(models.users, {
+      as: 'createdBy',
+      foreignKey: 'created_by',
+    });
   };
   return webtoon;
 };
