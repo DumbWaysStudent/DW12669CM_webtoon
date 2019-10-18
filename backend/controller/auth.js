@@ -3,13 +3,14 @@ const jwt = require('jsonwebtoken');
 const models = require('../models');
 const User = models.users;
 
+//Login
 exports.signIn = (req, res) => {
   const email = req.body.email;
   const password = req.body.password; //
 
   User.findOne({where: {email, password}}).then(user => {
     if (user) {
-      const token = jwt.sign({userId: user.id}, 'my-secret-key');
+      const token = 'Bearer ' + jwt.sign({userId: user.id}, 'zzzz');
       res.send({
         username: user.name,
         token,
@@ -22,9 +23,10 @@ exports.signIn = (req, res) => {
     }
   });
 };
-
+//
+//Register
 exports.signUp = (req, res) => {
-  const email = req.body.email;
+  const {email} = req.body;
   User.findOne({where: {email}}).then(user => {
     if (user) {
       res.send({
@@ -33,7 +35,7 @@ exports.signUp = (req, res) => {
       });
     } else {
       User.create(req.body).then(item => {
-        const token = jwt.sign({userId: item.id}, 'my-secret-key');
+        const token = 'Bearer ' + jwt.sign({userId: item.id}, 'zzzz');
         res.send({
           username: item.name,
           token,
