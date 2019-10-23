@@ -14,14 +14,14 @@ module.exports = {
     */
     return queryInterface.bulkInsert('users', [
       {
-        email: '1234@gmail.com',
+        email: 'omdy@gmail.com',
         password: '1234',
-        name: '1234 5678',
+        name: 'Om Dy',
       },
       {
-        email: '1234@gmail.com',
+        email: 'lor@gmail.com',
         password: '1234',
-        name: '1234 5678',
+        name: 'lor han',
       },
     ]);
   },

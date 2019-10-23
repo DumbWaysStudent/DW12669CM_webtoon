@@ -74,7 +74,10 @@ export class EditProfile extends Component {
               {this.state.avatarSource === '' ? (
                 <Image
                   style={styles.imageProfile}
-                  source={require('../image/user.png')}
+                  source={{
+                    uri:
+                      'https://p7.hiclipart.com/preview/858/581/271/user-computer-icons-system-chinese-wind-title-column.jpg',
+                  }}
                 />
               ) : (
                 <Image

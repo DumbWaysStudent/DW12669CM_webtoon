@@ -7,32 +7,39 @@ import {
   Text,
   Image,
   ScrollView,
+  Dimensions,
 } from 'react-native';
 import {Input, Button} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {FlatList} from 'react-native-gesture-handler';
 import SlideshowTools from '../components/Slider';
+import {connect} from 'react-redux';
 
-import {bannersHome} from '../components/Banners';
+const {height, width} = Dimensions.get('window');
 
-export class Home extends Component {
+// console.log(webtoons);
+class Home extends Component {
   listFavorite(item) {
     return (
-      <View>
-        <TouchableOpacity onPress={() => this.handleDetail()}>
-          <Image source={{uri: item.url}} style={styles.favoriteToon} />
-          <Text style={styles.text}> {item.title} </Text>
+      <View key={item.id}>
+        <TouchableOpacity onPress={() => this.handleDetailFav(item)}>
+          <Image
+            source={{uri: item.webtoonId.image}}
+            style={styles.favoriteToon}
+          />
+          <Text style={styles.text}> {item.webtoonId.title} </Text>
+          {console.log(item.webtoonId)}
         </TouchableOpacity>
       </View>
     );
   }
-  listFavoriteAll(item) {
+  listAll(item) {
     return (
-      <View style={{flexDirection: 'row'}}>
+      <View style={styles.allList}>
         <View>
-          <TouchableOpacity onPress={() => this.handleDetail()}>
-            <Image source={{uri: item.url}} style={styles.allToon} />
+          <TouchableOpacity onPress={() => this.handleDetail(item)}>
+            <Image source={{uri: item.image}} style={styles.allToon} />
           </TouchableOpacity>
         </View>
         <View style={styles.viewToon}>
@@ -50,11 +57,30 @@ export class Home extends Component {
     );
   }
 
-  handleDetail() {
-    this.props.navigation.navigate('detailToon');
+  handleDetail(item) {
+    this.props.navigation.navigate('detailToon', {
+      title: item.title,
+      cover: item.cover,
+      genre: item.genre,
+      description: item.description,
+      name: item.createdBy.name,
+    });
+  }
+
+  handleDetailFav(item) {
+    this.props.navigation.navigate('detailToon', {
+      title: item.webtoonId.title,
+      cover: item.webtoonId.cover,
+      genre: item.webtoonId.genre,
+      description: item.webtoonId.description,
+      name: item.userId.name,
+    });
   }
 
   render() {
+    console.disableYellowBox = true;
+    const {webtoons} = this.props.webtoonLocal;
+    const {fav} = this.props.favLocal;
     return (
       <View marginHorizontal={20} style={{flex: 1}}>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -75,19 +101,21 @@ export class Home extends Component {
               <Text style={styles.favorite}>Favorite</Text>
               <FlatList
                 // style={styles.flatList1}
-                data={bannersHome}
+                data={fav}
                 renderItem={({item}) => this.listFavorite(item)}
                 keyExtractor={item => item.title}
                 horizontal
               />
             </View>
-            <Text style={styles.favorite}>All</Text>
-            <FlatList
-              // style={styles.flatList1}
-              data={bannersHome}
-              renderItem={({item}) => this.listFavoriteAll(item)}
-              keyExtractor={item => item.title}
-            />
+            <View>
+              <Text style={styles.favorite}>All</Text>
+              <FlatList
+                // style={styles.flatList1}
+                data={webtoons}
+                renderItem={({item}) => this.listAll(item)}
+                keyExtractor={item => item.title}
+              />
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -95,26 +123,41 @@ export class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    webtoonLocal: state.webtoons,
+    favLocal: state.fav,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Home);
 
 const styles = StyleSheet.create({
   viewToon: {
     justifyContent: 'center',
   },
   allToon: {
-    height: 200,
-    width: 170,
+    height: height * 0.2,
+    width: width * 0.3,
     borderWidth: 3,
-    borderColor: 'black',
-    marginRight: 10,
-    marginTop: 5,
+    borderColor: 'silver',
+    marginRight: 100,
+    marginVertical: 15,
+    marginLeft: 10,
     borderRadius: 5,
   },
   favoriteToon: {
     height: 200,
     width: 170,
     borderWidth: 3,
-    borderColor: 'black',
+    borderColor: 'silver',
     marginRight: 10,
     borderRadius: 5,
   },
@@ -126,7 +169,7 @@ const styles = StyleSheet.create({
   },
   view: {
     flexDirection: 'row',
-    borderColor: 'black',
+    borderColor: 'silver',
     borderWidth: 3,
     marginTop: 20,
     height: 60,
@@ -141,9 +184,16 @@ const styles = StyleSheet.create({
   },
   favorite: {
     fontSize: 40,
+    marginVertical: 15,
   },
   text: {
     alignSelf: 'center',
     fontSize: 20,
+  },
+  allList: {
+    borderColor: 'silver',
+    borderWidth: 3,
+    flexDirection: 'row',
+    borderRadius: 30,
   },
 });

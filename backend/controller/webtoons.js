@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const webtoons = models.webtoons;
 const users = models.users;
-const favourite = models.favourites;
+const favourites = models.favourites;
 const episodes = models.episodes;
 const images = models.images;
 
@@ -84,7 +84,7 @@ exports.showEpImage = (req, res) => {
 //Favourite
 //Showing all
 exports.showFavourite = async (req, res) => {
-  const fav = await favourite.findAll({
+  const fav = await favourites.findAll({
     where: {user: req.query.id},
     attributes: ['createdAt', 'updatedAt'],
     include: [

@@ -2,11 +2,11 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
 import login from '../screen/Login';
+import loading from '../screen/Loading';
 import navBar from './NavBarHome';
-import editProfile from './NavBarHome';
+import test from './../screen/Test';
 import detailToon from '../screen/DetailToon';
 import detailToonEps from '../screen/DetailToonEps';
-// import editProfile from '../screen/EditProfile';
 import myWebToon from '../screen/MyWebToon';
 import creatWebToon from '../screen/CreateToon';
 import addEps from '../screen/CreateEps';
@@ -17,6 +17,12 @@ const mainNav = createStackNavigator(
   {
     login: {
       screen: login,
+      navigationOptions: ({navigation}) => ({
+        header: null,
+      }),
+    },
+    loading: {
+      screen: loading,
       navigationOptions: ({navigation}) => ({
         header: null,
       }),
@@ -69,9 +75,15 @@ const mainNav = createStackNavigator(
         header: null,
       }),
     },
+    test: {
+      screen: test,
+      navigationOptions: ({navigation}) => ({
+        header: null,
+      }),
+    },
   },
   {
-    initialRouteName: 'home',
+    initialRouteName: 'login',
   },
 );
 

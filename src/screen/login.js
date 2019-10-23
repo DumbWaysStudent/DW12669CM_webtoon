@@ -1,12 +1,14 @@
 /* eslint-disable no-unreachable */
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, AsyncStorage} from 'react-native';
 import {Button, Input, Item} from 'native-base';
 import {StackActions, NavigationActions} from 'react-navigation';
 import PasswordInputText from 'react-native-hide-show-password-input';
+import * as actionUsers from './../redux/actions/actionUsers';
+import {connect} from 'react-redux';
 
-export class App extends Component {
+export class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,13 +28,13 @@ export class App extends Component {
     this.setState({password: pass});
   }
   checkMail(mail) {
+    this.setState({email: mail});
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (reg.test(mail)) {
       return this.setState({isMailValid: true});
     } else {
       return this.setState({isMailValid: false});
     }
-    this.setState({email: mail});
   }
   check(mail, pass) {
     if (mail === true && pass === true) {
@@ -41,15 +43,31 @@ export class App extends Component {
       return true;
     }
   }
-  handleLogin() {
-    const changeIndex = StackActions.reset({
-      index: 0,
-      actions: [NavigationActions.navigate({routeName: 'home'})],
-    });
-    this.props.navigation.dispatch(changeIndex);
+  async handleLogin() {
+    const email = this.state.email;
+    const password = this.state.password;
+    await this.props.handleLogin(email, password);
+    const users = this.props.userLocal.login;
+    console.log('========================');
+    console.log(users.token);
+    console.log('========================');
+    if (users.token) {
+      console.log('===============');
+      console.log(users.username);
+      console.log('===============');
+      await AsyncStorage.multiSet([
+        ['token', users.token],
+        ['userid', `${users.id}`],
+        ['name', users.username],
+      ]);
+      this.props.navigation.navigate('loading');
+    } else {
+      alert('The email is not registered yet!');
+    }
   }
 
   render() {
+    console.disableYellowBox = true;
     return (
       <View style={{flex: 1}}>
         <View style={styles.subViewTitle}>
@@ -89,6 +107,24 @@ export class App extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    userLocal: state.login,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleLogin: (email, password) =>
+      dispatch(actionUsers.handleLogin(email, password)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Login);
+
 const styles = StyleSheet.create({
   title: {
     fontSize: 60,
@@ -114,4 +150,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-export default App;

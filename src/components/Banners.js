@@ -174,7 +174,8 @@ export const bannersHome = [
   },
   {
     title: '유리의 아르바이트',
-    url: 'https://image.webtoonguide.com/fe/b7/3cc0163681b2c8d23b6209a7d22a',
+    url:
+      'https://getmanhwa.com/wp-content/uploads/2019/07/Yuris-perfect-Married-life.jpg',
   },
   {
     title: 'Tsumi To Kai',
@@ -182,7 +183,8 @@ export const bannersHome = [
   },
   {
     title: '퍼펙트 하프',
-    url: 'https://t1.daumcdn.net/cfile/tistory/99B6914F5D77D02626',
+    url:
+      'https://getmanhwa.com/wp-content/uploads/2019/08/Perfect-half-title-correct.jpg',
   },
 ];
 

@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, Dimensions} from 'react-native';
 
 import Slideshow from 'react-native-image-slider-show';
 import {bannersFavorite} from './Banners';
+
+const {height, width} = Dimensions.get('window');
 
 export default class SlideshowTools extends Component {
   constructor(props) {
@@ -32,7 +34,7 @@ export default class SlideshowTools extends Component {
     return (
       <View style={styles.showBorder}>
         <Slideshow
-          height={264}
+          height={height * 0.364}
           dataSource={this.state.dataSource}
           position={this.state.position}
           onPositionChanged={position => this.setState({position})}
@@ -43,9 +45,10 @@ export default class SlideshowTools extends Component {
 }
 const styles = {
   showBorder: {
-    height: 270,
+    height: height * 0.37,
+    width: width * 0.933,
     marginTop: 5,
-    borderColor: 'black',
+    borderColor: 'silver',
     borderWidth: 3,
     borderRadius: 5,
   },

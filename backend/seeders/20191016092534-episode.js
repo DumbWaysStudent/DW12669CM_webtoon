@@ -16,20 +16,50 @@ module.exports = {
       {
         title: 'EP 1',
         image:
-          'https://4.bp.blogspot.com/-AJymNNkUGpc/WvP2frFdfXI/AAAAAAAAcNE/AmrKcJhayXc8k1spwyKlXfzh03N-GN--QCLcBGAs/s1600/2.jpg',
+          'https://getmanhwa.com/wp-content/uploads/2019/08/Perfect-half-title-correct.jpg',
+        webtoon: 1,
+      },
+      {
+        title: 'EP 1',
+        image:
+          'https://getmanhwa.com/wp-content/uploads/2019/07/Solo-Leveling.jpg',
         webtoon: 2,
       },
       {
-        title: 'EP 2',
+        title: 'EP 1',
         image:
-          'https://4.bp.blogspot.com/-AJymNNkUGpc/WvP2frFdfXI/AAAAAAAAcNE/AmrKcJhayXc8k1spwyKlXfzh03N-GN--QCLcBGAs/s1600/2.jpg',
-        webtoon: 2,
+          'http://postfiles3.naver.net/20160626_34/juderland_1466924213290Heosh_JPEG/%C1%A6%B8%F1re.jpg?type=w2',
+        webtoon: 3,
       },
       {
-        title: 'EP 3',
+        title: 'EP 1',
         image:
-          'https://4.bp.blogspot.com/-AJymNNkUGpc/WvP2frFdfXI/AAAAAAAAcNE/AmrKcJhayXc8k1spwyKlXfzh03N-GN--QCLcBGAs/s1600/2.jpg',
-        webtoon: 2,
+          'https://getmanhwa.com/wp-content/uploads/2019/07/Devils-Descendants.jpg',
+        webtoon: 4,
+      },
+      {
+        title: 'EP 1',
+        image:
+          'https://getmanhwa.com/wp-content/uploads/2019/08/Perfect-half-title-correct.jpg',
+        webtoon: 5,
+      },
+      {
+        title: 'EP 1',
+        image:
+          'https://getmanhwa.com/wp-content/uploads/2019/08/Delivery-Knight-title.jpg',
+        webtoon: 6,
+      },
+      {
+        title: 'EP 1',
+        image:
+          'https://getmanhwa.com/wp-content/uploads/2019/09/Love-square-title.png',
+        webtoon: 7,
+      },
+      {
+        title: 'EP 1',
+        image:
+          'https://getmanhwa.com/wp-content/uploads/2019/07/Yuris-perfect-Married-life.jpg',
+        webtoon: 8,
       },
     ]);
   },
