@@ -11,7 +11,6 @@ export default function reducerLogin(state = initialState, action) {
         ...state,
       };
     case `${types.LOGIN}_FULFILLED`:
-      console.log(action.payload);
       return {
         ...state,
         login: action.payload.data,

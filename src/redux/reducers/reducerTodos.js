@@ -13,7 +13,6 @@ export default function reducerTodos(state = initialState, action) {
       };
     case types.ADD_TODOS:
       state.todos.push(action.payload);
-      console.log(action.payload);
       return {
         ...state,
       };

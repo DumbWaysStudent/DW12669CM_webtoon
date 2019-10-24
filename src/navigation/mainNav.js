@@ -83,7 +83,7 @@ const mainNav = createStackNavigator(
     },
   },
   {
-    initialRouteName: 'login',
+    initialRouteName: 'loading',
   },
 );
 

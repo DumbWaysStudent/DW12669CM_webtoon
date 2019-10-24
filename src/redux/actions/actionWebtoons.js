@@ -5,10 +5,16 @@ export const handleGetWebtoons = () => ({
   type: types.GET_WEBTOONS,
   payload: axios.get('https://webtoon-backend.herokuapp.com/api/v1/webtoons'),
 });
-export const handleGetFav = () => ({
+export const handleGetFav = id => ({
   type: types.GET_FAV,
   payload: axios.get(
-    'https://webtoon-backend.herokuapp.com/api/v1/webtoonfav/1',
+    `https://webtoon-backend.herokuapp.com/api/v1/webtoonfav/${id}`,
+  ),
+});
+export const handleGetEps = id => ({
+  type: types.GET_EPS,
+  payload: axios.get(
+    `https://webtoon-backend.herokuapp.com/api/v1/webtoon/${id}/episodes`,
   ),
 });
 export const handleAddWebtoons = params => ({

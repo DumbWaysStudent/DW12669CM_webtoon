@@ -11,7 +11,8 @@ import {
 } from 'react-native';
 import {Button, Header, Left, Title, Right, Body} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import * as actionEps from './../redux/actions/actionWebtoons';
+import {connect} from 'react-redux';
 import {FlatList} from 'react-native-gesture-handler';
 import {bannersEps} from '../components/Banners';
 
@@ -23,17 +24,23 @@ const shareOptions = {
 };
 const {height, width} = Dimensions.get('window');
 export class DetailToon extends Component {
+  componentDidMount() {
+    setTimeout(async () => {
+      const id = this.props.navigation.getParam('id');
+      await this.props.handleGetEps(id);
+    }, 1000);
+  }
   listAllEp(item) {
     return (
       <View style={{flexDirection: 'row'}}>
         <View>
-          <TouchableOpacity onPress={() => this.handleDetail()}>
-            <Image source={{uri: item.url}} style={styles.listToon} />
+          <TouchableOpacity onPress={() => this.handleDetail(item)}>
+            <Image source={{uri: item.image}} style={styles.listToon} />
           </TouchableOpacity>
         </View>
         <View style={styles.listDetailToonToon}>
           <Text style={styles.titleNDate}> {item.title} </Text>
-          <Text> {item.date} </Text>
+          <Text> {item.createdAt} </Text>
         </View>
       </View>
     );
@@ -41,11 +48,16 @@ export class DetailToon extends Component {
   handleBack() {
     this.props.navigation.navigate('home');
   }
-  handleDetail() {
-    this.props.navigation.navigate('detailToonEps');
+  handleDetail(item) {
+    this.props.navigation.navigate('detailToonEps', {
+      title: item.title,
+      id: item.id,
+      webtoonid: this.props.navigation.getParam('id'),
+    });
   }
 
   render() {
+    const {eps} = this.props.epsLocal;
     return (
       <View style={{flex: 1}}>
         <View>
@@ -67,7 +79,6 @@ export class DetailToon extends Component {
             </Right>
           </Header>
         </View>
-        {/* <View style={styles.viewToon}> */}
         <Image
           name="image"
           source={{uri: this.props.navigation.getParam('cover')}}
@@ -78,11 +89,10 @@ export class DetailToon extends Component {
           <Text style={styles.descSis}>{this.props.navigation.getParam(`description`)}</Text>
           <Text style={styles.descTitle}>Created By: {this.props.navigation.getParam('name')}</Text>
         </View>
-        {/* </View> */}
         <View style={{flex: 5.75}}>
           <FlatList
             // style={styles.flatList1}
-            data={bannersEps}
+            data={eps}
             renderItem={({item}) => this.listAllEp(item)}
             keyExtractor={item => item.title}
           />
@@ -92,7 +102,22 @@ export class DetailToon extends Component {
   }
 }
 
-export default DetailToon;
+const mapStateToProps = state => {
+  return {
+    epsLocal: state.eps,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleGetEps: id => dispatch(actionEps.handleGetEps(id)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(DetailToon);
 
 const styles = StyleSheet.create({
   header: {

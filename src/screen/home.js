@@ -59,6 +59,7 @@ class Home extends Component {
 
   handleDetail(item) {
     this.props.navigation.navigate('detailToon', {
+      id: item.id,
       title: item.title,
       cover: item.cover,
       genre: item.genre,
@@ -69,6 +70,7 @@ class Home extends Component {
 
   handleDetailFav(item) {
     this.props.navigation.navigate('detailToon', {
+      id: item.webtoonId.id,
       title: item.webtoonId.title,
       cover: item.webtoonId.cover,
       genre: item.webtoonId.genre,

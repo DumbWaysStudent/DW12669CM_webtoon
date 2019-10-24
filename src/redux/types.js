@@ -12,3 +12,8 @@ export const UPDATE_WEBTOONS = 'UPDATE_WEBTOONS';
 //users
 export const LOGIN = 'LOGIN';
 export const REGISTER = 'REGISTER';
+//wbtoon episode crude
+export const GET_EPS = 'GET_EPS';
+export const ADD_EPS = 'ADD_EPS';
+export const DELETE_EPS = 'DELETE_EPS';
+export const UPDATE_EPS = 'UPDATE_EPS';

@@ -48,21 +48,20 @@ export class Login extends Component {
     const password = this.state.password;
     await this.props.handleLogin(email, password);
     const users = this.props.userLocal.login;
-    console.log('========================');
-    console.log(users.token);
-    console.log('========================');
     if (users.token) {
-      console.log('===============');
-      console.log(users.username);
-      console.log('===============');
       await AsyncStorage.multiSet([
         ['token', users.token],
-        ['userid', `${users.id}`],
-        ['name', users.username],
+        ['userid', `${users.data.id}`],
+        ['name', users.data.name],
+        ['image', users.data.image],
       ]);
-      this.props.navigation.navigate('loading');
+      const resetAction = StackActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({routeName: 'loading'})],
+      });
+      this.props.navigation.dispatch(resetAction);
     } else {
-      alert('The email is not registered yet!');
+      alert('Invalid email or password!');
     }
   }
 
