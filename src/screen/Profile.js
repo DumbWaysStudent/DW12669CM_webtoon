@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {View, TouchableOpacity, Text} from 'react-native';
+import {View, TouchableOpacity, Text, AsyncStorage} from 'react-native';
 import {Header, Title, Right, Body, Image} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 const name = 'Cerkhachacu';
@@ -13,6 +13,10 @@ export class Profile extends Component {
     image: '',
     name: '',
   };
+  async handleLogOut() {
+    await AsyncStorage.removeItem('token');
+    await this.props.navigation.navigate('login');
+  }
   handleEditProfile(item) {
     this.props.navigation.navigate('editProfile', {name: item});
   }
@@ -57,7 +61,7 @@ export class Profile extends Component {
           <View style={styles.viewButtonText}>
             <TouchableOpacity
               style={styles.opacity}
-              onPress={() => this.props.navigation.navigate('login')}>
+              onPress={() => this.handleLogOut()}>
               <Text style={styles.text}> Log Out </Text>
             </TouchableOpacity>
           </View>

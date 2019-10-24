@@ -17,3 +17,8 @@ export const GET_EPS = 'GET_EPS';
 export const ADD_EPS = 'ADD_EPS';
 export const DELETE_EPS = 'DELETE_EPS';
 export const UPDATE_EPS = 'UPDATE_EPS';
+//webtoon img crude
+export const GET_IMG = 'GET_IMG';
+export const ADD_IMG = 'ADD_IMG';
+export const DELETE_IMG = 'DELETE_IMG';
+export const UPDATE_IMG = 'UPDATE_IMG';

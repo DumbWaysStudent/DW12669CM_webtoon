@@ -17,6 +17,12 @@ export const handleGetEps = id => ({
     `https://webtoon-backend.herokuapp.com/api/v1/webtoon/${id}/episodes`,
   ),
 });
+export const handleGetImg = (id, idImg) => ({
+  type: types.GET_IMG,
+  payload: axios.get(
+    `https://webtoon-backend.herokuapp.com/api/v1/webtoon/${id}/episode/${idImg}`,
+  ),
+});
 export const handleAddWebtoons = params => ({
   type: types.ADD_WEBTOONS,
   payload: params,

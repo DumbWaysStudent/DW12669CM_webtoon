@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 import {createNavigationReducer} from 'react-navigation-redux-helpers';
 
 import reducerTodos from './../reducers/reducerTodos';
+import reducerImg from './../reducers/reducerImg';
 import reducerEps from './../reducers/reducerEps';
 import reducerWebtoons from './../reducers/reducerWebtoons';
 import reducerLogin from './reducerLogin';
@@ -17,6 +18,7 @@ const appReducer = combineReducers({
   fav: reducerFavs,
   login: reducerLogin,
   eps: reducerEps,
+  img: reducerImg,
 });
 
 export default appReducer;

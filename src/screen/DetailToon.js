@@ -14,7 +14,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import * as actionEps from './../redux/actions/actionWebtoons';
 import {connect} from 'react-redux';
 import {FlatList} from 'react-native-gesture-handler';
-import {bannersEps} from '../components/Banners';
 
 const shareOptions = {
   title: 'Title',
@@ -31,8 +30,13 @@ export class DetailToon extends Component {
     }, 1000);
   }
   listAllEp(item) {
+    const date = item.createdAt.substring(0, 10);
+    date
+      .split('-')
+      .reverse()
+      .join('/');
     return (
-      <View style={{flexDirection: 'row'}}>
+      <View style={styles.listEps}>
         <View>
           <TouchableOpacity onPress={() => this.handleDetail(item)}>
             <Image source={{uri: item.image}} style={styles.listToon} />
@@ -40,7 +44,7 @@ export class DetailToon extends Component {
         </View>
         <View style={styles.listDetailToonToon}>
           <Text style={styles.titleNDate}> {item.title} </Text>
-          <Text> {item.createdAt} </Text>
+          <Text> {date} </Text>
         </View>
       </View>
     );
@@ -49,10 +53,12 @@ export class DetailToon extends Component {
     this.props.navigation.navigate('home');
   }
   handleDetail(item) {
+    console.log(item.webToon.title);
     this.props.navigation.navigate('detailToonEps', {
       title: item.title,
       id: item.id,
-      webtoonid: this.props.navigation.getParam('id'),
+      webtoonId: item.webToon.id,
+      webtoonName: item.webToon.title,
     });
   }
 
@@ -85,13 +91,19 @@ export class DetailToon extends Component {
           style={styles.toon}
         />
         <View style={styles.descripton}>
-          <Text style={styles.descTitle}> {this.props.navigation.getParam('genre')} </Text>
-          <Text style={styles.descSis}>{this.props.navigation.getParam(`description`)}</Text>
-          <Text style={styles.descTitle}>Created By: {this.props.navigation.getParam('name')}</Text>
+          <Text style={styles.descTitle}>
+            {this.props.navigation.getParam('genre')}
+          </Text>
+          <Text style={styles.descSis}>
+            {this.props.navigation.getParam('description')}
+          </Text>
+          <Text style={styles.descTitle}>
+            Created By: {this.props.navigation.getParam('name')}
+          </Text>
         </View>
         <View style={{flex: 5.75}}>
           <FlatList
-            // style={styles.flatList1}
+            style={styles.flatList}
             data={eps}
             renderItem={({item}) => this.listAllEp(item)}
             keyExtractor={item => item.title}
@@ -177,5 +189,12 @@ const styles = StyleSheet.create({
   descSis: {
     fontSize: 15,
     marginHorizontal: 5,
+  },
+  listEps: {
+    flexDirection: 'row',
+    marginHorizontal: 35,
+  },
+  flatList: {
+    marginTop: 20,
   },
 });

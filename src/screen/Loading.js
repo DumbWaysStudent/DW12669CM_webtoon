@@ -8,15 +8,21 @@ import {connect} from 'react-redux';
 class Loading extends Component {
   componentDidMount() {
     setTimeout(async () => {
-      await this.props.handleGetWebtoons();
-      const id = await AsyncStorage.getItem('userid');
-      await this.props.handleGetFav(id);
-      // await this.props.handleGetEps();
-      const resetAction = StackActions.reset({
-        index: 0,
-        actions: [NavigationActions.navigate({routeName: 'home'})],
-      });
-      this.props.navigation.dispatch(resetAction);
+      const token = await AsyncStorage.getItem('token');
+      console.log(token);
+      if (token === null) {
+        this.props.navigation.navigate('login');
+      } else {
+        await this.props.handleGetWebtoons();
+        const id = await AsyncStorage.getItem('userid');
+        await this.props.handleGetFav(id);
+        // await this.props.handleGetEps();
+        const resetAction = StackActions.reset({
+          index: 0,
+          actions: [NavigationActions.navigate({routeName: 'home'})],
+        });
+        this.props.navigation.dispatch(resetAction);
+      }
     }, 1000);
   }
   render() {
