@@ -1,9 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {View, TouchableOpacity, Text, AsyncStorage} from 'react-native';
-import {Header, Title, Right, Body, Image} from 'native-base';
+import {View, TouchableOpacity, Text, AsyncStorage, Image} from 'react-native';
+import {Header, Title, Right, Body} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
-const name = 'Cerkhachacu';
 // const image= this.props.navigation.getParam('image');
 // const profName= this.props.navigation.getParam('name');
 export class Profile extends Component {
@@ -13,6 +12,14 @@ export class Profile extends Component {
     image: '',
     name: '',
   };
+  async componentDidMount() {
+    const img = await AsyncStorage.getItem('image');
+    const username = await AsyncStorage.getItem('name');
+    console.log('=============');
+    console.log(img);
+    console.log('=============');
+    this.setState({name: username, image: img});
+  }
   async handleLogOut() {
     await AsyncStorage.removeItem('token');
     await this.props.navigation.navigate('login');
@@ -24,6 +31,9 @@ export class Profile extends Component {
     this.props.navigation.navigate('myWebToon');
   }
   render() {
+    console.log('================');
+    console.log(this.state.image);
+    console.log('================');
     return (
       <View style={{flex: 1}}>
         <View style={{flex: 1}}>
@@ -32,23 +42,16 @@ export class Profile extends Component {
               <Title style={styles.titleHeader}> Profile </Title>
             </Body>
             <Right>
-              <TouchableOpacity onPress={() => this.handleEditProfile(name)}>
+              <TouchableOpacity onPress={() => this.handleEditProfile()}>
                 <Icon name="pencil" style={styles.iconHeader} />
               </TouchableOpacity>
             </Right>
           </Header>
         </View>
-        {this.state.image === '' ? (
-          <View style={styles.profile}>
-            <Icon name="user-circle" style={styles.iconProfile} />
-            <Text style={styles.iconName}>Cerkhachacu</Text>
-          </View>
-        ) : (
-          <View style={styles.profile}>
-            <Image style={styles.imageProfile} source={this.state.image} />
-            <Text style={styles.iconName}>{this.state.name}</Text>
-          </View>
-        )}
+        <View style={styles.profile}>
+          <Image source={{uri: this.state.image}} style={styles.iconProfile} />
+          <Text style={styles.iconName}>{this.state.name}</Text>
+        </View>
         <View style={{flex: 5.2}}>
           <View style={styles.viewButtonText}>
             <TouchableOpacity
@@ -93,12 +96,17 @@ const styles = {
     marginTop: 40,
   },
   iconProfile: {
-    fontSize: 200,
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    marginTop: 40,
     color: 'grey',
+    alignSelf: 'center',
   },
   iconName: {
     fontSize: 50,
     fontWeight: 'bold',
+    alignSelf: 'center',
   },
   viewButtonText: {
     borderColor: 'black',

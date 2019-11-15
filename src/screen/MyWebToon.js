@@ -1,20 +1,37 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {View, StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, Text, Image, AsyncStorage} from 'react-native';
 import {Header, Left, Body, Title, Fab} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {connect} from 'react-redux';
+import * as actionCreation from './../redux/actions/actionWebtoons';
 
 import {FlatList} from 'react-native-gesture-handler';
 
 import {bannersFavorite} from '../components/Banners';
 
 export class MyWebToon extends Component {
+  componentDidMount() {
+    setTimeout(async () => {
+      const params = {
+        token: await AsyncStorage.getItem('token'),
+        userid: await AsyncStorage.getItem('userid'),
+      };
+      console.log('=============================');
+      console.log(params.token);
+      console.log('=======================');
+      console.log('=============================');
+      console.log(params.userid);
+      console.log('=======================');
+      await this.props.handleGetMyCreation(params);
+    }, 1000);
+  }
   listFavoriteAll(item) {
     return (
       <View style={{flexDirection: 'row'}}>
         <View>
           <TouchableOpacity onPress={() => this.handleDetail(item.title)}>
-            <Image source={{uri: item.url}} style={styles.listToon} />
+            <Image source={{uri: item.image}} style={styles.listToon} />
           </TouchableOpacity>
         </View>
         <View style={styles.listDetailToon}>
@@ -35,6 +52,7 @@ export class MyWebToon extends Component {
   }
 
   render() {
+    const {toon} = this.props.creationLocal;
     return (
       <View style={{flex: 1}}>
         <View>
@@ -52,7 +70,7 @@ export class MyWebToon extends Component {
         <View style={{flex: 9, marginTop: 20, marginHorizontal: 20}}>
           <FlatList
             // style={styles.flatList1}
-            data={bannersFavorite}
+            data={toon}
             renderItem={({item}) => this.listFavoriteAll(item)}
             keyExtractor={item => item.title}
           />
@@ -72,7 +90,23 @@ export class MyWebToon extends Component {
   }
 }
 
-export default MyWebToon;
+const mapStateToProps = state => {
+  return {
+    creationLocal: state.toon,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleGetMyCreation: params =>
+      dispatch(actionCreation.handleGetMyCreation(params)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MyWebToon);
 
 const styles = StyleSheet.create({
   header: {

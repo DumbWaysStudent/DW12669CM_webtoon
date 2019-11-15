@@ -22,3 +22,8 @@ export const GET_IMG = 'GET_IMG';
 export const ADD_IMG = 'ADD_IMG';
 export const DELETE_IMG = 'DELETE_IMG';
 export const UPDATE_IMG = 'UPDATE_IMG';
+//mywebtooon
+export const GET_MYCREATION = 'GET_MYCREATION';
+export const ADD_MYCREATION = 'ADD_MYCREATION';
+export const DELETE_MYCREATION = 'DELETE_MYCREATION';
+export const UPDATE_MYCREATION = 'UPDATE_MYCREATION';

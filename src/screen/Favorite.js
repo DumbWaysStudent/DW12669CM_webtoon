@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {View, StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
 import {Input} from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {connect} from 'react-redux';
 
 import {FlatList} from 'react-native-gesture-handler';
 
@@ -14,12 +15,12 @@ export class Favorite extends Component {
       <View style={{flexDirection: 'row'}}>
         <View>
           <TouchableOpacity onPress={() => this.handleDetail()}>
-            <Image source={{uri: item.url}} style={styles.listToon} />
+            <Image source={{uri: item.webtoonId.image}} style={styles.listToon} />
           </TouchableOpacity>
         </View>
         <View style={styles.listDetailToon}>
-          <Text style={styles.title}> {item.title} </Text>
-          <Text style={styles.favorite}> {item.favorite} </Text>
+          <Text style={styles.title}> {item.webtoonId.title} </Text>
+          <Text style={styles.favorite}>{item.webtoonId.fav_count}{' Favorite'}</Text>
         </View>
       </View>
     );
@@ -34,6 +35,7 @@ export class Favorite extends Component {
   }
 
   render() {
+    const {fav} = this.props.favLocal;
     return (
       <View marginHorizontal={20} style={{flex: 1}}>
         <View style={{flex: 1.5, marginTop: 15}}>
@@ -53,7 +55,7 @@ export class Favorite extends Component {
         <View style={{flex: 9.2}}>
           <FlatList
             // style={styles.flatList1}
-            data={bannersFavorite}
+            data={fav}
             renderItem={({item}) => this.listFavoriteAll(item)}
             keyExtractor={item => item.title}
           />
@@ -63,7 +65,20 @@ export class Favorite extends Component {
   }
 }
 
-export default Favorite;
+const mapStateToProps = state => {
+  return {
+    favLocal: state.fav,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Favorite);
 
 const styles = StyleSheet.create({
   view: {
